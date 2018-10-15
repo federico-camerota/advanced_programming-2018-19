@@ -1,0 +1,15 @@
+unique line 1
+line repeated 2 times
+line repeated 2 times
+unique line 2
+unique line 3
+line repeated 5 times
+line repeated 5 times
+line repeated 5 times
+line repeated 5 times
+line repeated 5 times
+unique line 4
+line repeated 3 times
+line repeated 3 times
+line repeated 3 times
+unique line 5
