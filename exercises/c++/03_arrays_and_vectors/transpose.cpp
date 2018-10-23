@@ -11,7 +11,7 @@ void transpose( const std::array<double, SIZE> &matrix,std::array<double, SIZE> 
 
 //another version of transpose
 template <std::size_t SIZE>
-std::array<double,SIZE> transpose_2( const std::array<double, SIZE> &matrix, const std::size_t N, const std::size_t M);
+void  transpose_2( const std::array<double, SIZE> &matrix, std::array<double, SIZE> &tr, const std::size_t N, const std::size_t M);
 
 //print a matrix
 template <std::size_t SIZE>
@@ -20,8 +20,8 @@ void print_matrix( const std::array<double, SIZE> &matix, const std::size_t N, c
 int main(){
 
     const std::size_t N = 4;
-    const std::size_t M = 4;
-    std::array<double, M*N> mat{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+    const std::size_t M = 10;
+    std::array<double, M*N> mat{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
     std::array<double, M*N> tr;
     print_matrix(mat, N, M);
     std::cout << std::endl;
@@ -29,7 +29,7 @@ int main(){
     //transpose_square(mat, N, M);
     //print_matrix(mat, M, N);
     //otherwise
-    //tr = transpose_2(mat, N, M);
+    //transpose_2(mat, tr, N, M);
     transpose(mat, tr, N, M);
     print_matrix(tr, M, N);
 }
@@ -61,14 +61,12 @@ template <std::size_t SIZE>
 void transpose( const std::array<double, SIZE> &matrix,std::array<double, SIZE> &tr, const std::size_t N, const std::size_t M){
 
     for (std::size_t i = 0; i < SIZE; i++)
-        tr[N*(i%M) + (i/M)] = matrix[i];
+        tr[i] = matrix[(i%N)*M + i/N];
     
 }
 template <std::size_t SIZE>
-std::array<double,SIZE> transpose_2( const std::array<double, SIZE> &matrix, const std::size_t N, const std::size_t M){
+void transpose_2( const std::array<double, SIZE> &matrix, std::array<double, SIZE> &tr, const std::size_t N, const std::size_t M){
 
-    std::array<double, SIZE> tr;
     for (std::size_t i = 0; i < SIZE; i++)
         tr[N*(i%M) + (i/M)] = matrix[i];
-   return tr; 
 }
