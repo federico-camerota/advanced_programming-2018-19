@@ -1,11 +1,17 @@
 #include <iostream>
 
+/*
+ * mont_type enum encodes months of the year
+ */
 enum class month_type {JAN=1, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
 
-bool is_leap(const unsigned y){
+/*
+ * Function prototypes
+ */
+bool is_leap(const unsigned y);
+month_type& operator++(month_type& month);
 
-    return (y%4 == 0) && !(y%400 == 0);
-}
+
 /*
  * Date class
  */
@@ -43,11 +49,6 @@ class Date{
 };
 
 
-month_type& operator++(month_type& month){
-
-    month = month_type((int(month)  % 12) + 1); 
-    return month;
-}
 
 /*
  * add_day function, adds a single day to a Date
@@ -86,9 +87,25 @@ void Date::add_day(){
    } 
 }
 
+
+
+/*
+ * Test if a year is leap
+ */
+bool is_leap(const unsigned y){
+
+    return (y%4 == 0) && !(y%400 == 0);
+}
+
+
 /*
  * Helper functions
  */
+bool operator==( const Date& lhs, const Date& rhs);
+bool operator!=( const Date& lhs, const Date& rhs);
+std::ostream& operator<<(std::ostream& os, const month_type& m);
+std::ostream& operator<<(std::ostream& os, const Date& d);
+
 bool operator==( const Date& lhs, const Date& rhs){
 
     return (lhs.year() == rhs.year()) && (lhs.month() == rhs.month()) && (lhs.day() == rhs.day());
@@ -106,6 +123,11 @@ std::ostream& operator<<(std::ostream& os, const Date& d){
 
     os << d.year() <<"/"<< d.month() << "/" << d.day();
     return os;
+}
+month_type& operator++(month_type& month){
+
+    month = month_type((int(month)  % 12) + 1); 
+    return month;
 }
 
 
