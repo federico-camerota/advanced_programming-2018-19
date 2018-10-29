@@ -4,7 +4,7 @@
 #include <vector>
 
 double  mean (const std::vector<double> &);
-double median (std::vector<double> &);
+double median (const std::vector<double> &);
 
 int main (int argc, char *argv[]){
 
@@ -43,7 +43,7 @@ double  mean (const std::vector<double> &vect){
     return sum/vect.size();
 }
 
-double median (std::vector<double> &vect){
+double median (const std::vector<double> &vect){
 
     std::sort(vect.begin(), vect.end());
     if (vect.size()%2 == 0)
