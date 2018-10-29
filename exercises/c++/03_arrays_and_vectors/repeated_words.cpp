@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <ctime>
 
 void binary_insert (std::vector<std::string> &, const std::string &);
 
@@ -8,11 +9,14 @@ int main(){
 
     std::vector<std::string> words;
     std::string w;
+    auto time = clock();
     while (std::cin >> w)
         binary_insert(words, w);
+    time = clock() - time;
 
     for (const std::string a : words)
         std::cout << a << std::endl;
+    std::cout << "\n=============================\n" << "elapsed time: " << double(time)/CLOCKS_PER_SEC << "\n=============================\n";
 
 }
 
