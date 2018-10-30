@@ -18,18 +18,19 @@ month_type& operator++(month_type& month);
  */
 class Date{
 
-    private:
+   public:
+        Date (unsigned day, month_type month, unsigned year);
+        unsigned day() const;
+        month_type month() const;
+        unsigned year() const;
+        void add_days( const unsigned n);   
+   private:
         month_type m;
         unsigned d;
         unsigned y;
         void add_day();
 
-    public:
-        Date (unsigned day, month_type month, unsigned year);
-        unsigned day() const;
-        month_type month() const;
-        unsigned year() const;
-        void add_days( const unsigned n);
+  
 };
 
 /*
