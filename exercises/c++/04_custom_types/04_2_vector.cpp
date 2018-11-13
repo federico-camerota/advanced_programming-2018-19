@@ -3,46 +3,9 @@
 
 template <typename num>
 class Vector {
+
   num* elem;
   std::size_t _size;
-
-  class iterator {
-
-      private:
-          num* _element;
-          std::size_t _position;
-          std::size_t _size;
-      public:
-          iterator(num* elem, std::size_t position, std::size_t size) noexcept:
-              _element{elem}, _position{position}, _size{size}
-          {}
-          iterator operator++(){
-          
-              if (_position < _size){
-                _position++;
-                _element++;
-              }
-              if (_position == _size)
-                  _element = nullptr;
-                
-            return *this;
-          }
-          num& operator*() const {
-          
-            return *_element;
-          }
-          bool operator== (const iterator& that) const{
-          
-              if (_position == that._position)
-                  if (_element == that._element)
-                      return true;
-            return false;
-          }
-          bool operator!= (const iterator& that) const{
-          
-              return !operator==(that);
-          }
-  };
 
  public:
   Vector(const std::size_t size) : elem{new num[size]}, _size{size} {}
@@ -51,25 +14,25 @@ class Vector {
   ~Vector() { delete[] elem; }
 
   // try to remove the const and recompile
-  std::size_t size() const { return _size; }
+  auto size() const { return _size; }
 
   num& operator[](const std::size_t i) { return elem[i]; }
 
   // try to comment this line and recompile
   const num& operator[](const std::size_t i) const { return elem[i]; }
 
-  iterator begin(){
+  num* begin() const noexcept {
   
-      return iterator{elem, 0U, _size};
+      return elem;
   }
-  iterator end(){
+  num* end() const noexcept {
   
-      return iterator{nullptr, _size, _size};
+      return (elem + _size);
   }
 };
 
 template <typename T>
-std::ostream& operator<<(std::ostream& os, const Vector<T>& v) {
+auto& operator<<(std::ostream& os, const Vector<T>& v) {
   for (auto i = 0u; i < v.size(); ++i)
     os << "v[" << i << "] = " << v[i] << std::endl;
   return os;
@@ -100,6 +63,12 @@ int main() {
   std::cout << rv << std::endl;
   std::cout << "Range besed for loop:" << std::endl;
   for (auto x : rv)
+      std::cout << x << std::endl;
+
+  
+  const Vector<double>& crv{rv};
+  std::cout << "Range besed for loop on const:" << std::endl;
+  for (auto x : crv)
       std::cout << x << std::endl;
 
   return 0;
