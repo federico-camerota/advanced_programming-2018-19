@@ -141,7 +141,7 @@ int main(){
         today.add_days(1);
         std::cout << today.day() << " " << int(today.month()) << " " << today.year() << std::endl;
     }
-    //std::cout << today << std::endl;
-    //std::cout << otherday << std::endl;
-    //std::cout << (today == otherday) << std::endl;
+    std::cout << today << std::endl;
+    std::cout << otherday << std::endl;
+    std::cout << (today == otherday) << std::endl;
 }

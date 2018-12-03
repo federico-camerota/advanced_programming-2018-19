@@ -70,10 +70,12 @@ namespace mylib
 		    }
 		    auto& operator* ()
 		    {
+			std::cout << "operator*" << std::endl; //DEBUG
 			return (*node).get_elem();
 		    }
 		    const auto& operator* () const
 		    {
+			std::cout << "operator* const" << std::endl; //DEBUG
 			return (*node).get_elem();
 		    }
 		    bool operator== (const ListIterator<V>& other) const
@@ -121,10 +123,12 @@ namespace mylib
 
 	    iterator<T> const begin() const 
 	    { 
+		std::cout << "begin() const" << std::endl; //DEBUG
 		return ListIterator<T>(head);
 	    }
 	    iterator<T> const end() const
 	    {
+		std::cout << "end() const" << std::endl; //DEBUG
 		return iterator<T>(nullptr);
 	    }
 	    /**
