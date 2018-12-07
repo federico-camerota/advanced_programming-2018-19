@@ -11,10 +11,11 @@ def is_palindrome(string_var):
     return ret 
 
 #Test is_palindrome function
-print(is_palindrome(6543))
-print(is_palindrome('abcdcba'))
-print(is_palindrome('anna'))
-print(is_palindrome('sdlkjf'))
+print("*** is_palindrome tests ***")
+print("is_palindrome(6543)",is_palindrome(6543))
+print("is_palindrome('abcdcba')",is_palindrome('abcdcba'))
+print("is_palindrome('anna')",is_palindrome('anna'))
+print("is_palindrome('sdlkjf')",is_palindrome('sdlkjf'))
 
 def histogram_letters(string_var):     
     '''
@@ -31,8 +32,9 @@ def histogram_letters(string_var):
     return ret 
 
 #Test histogram_letters function
-print(histogram_letters(234))
-print(histogram_letters('hello, world! how are you?'))
+print("*** histogram_letters tests ***")
+print("histogram_letters(234)",histogram_letters(234))
+print("histogram_letters('hello, world! how are you?')",histogram_letters('hello, world! how are you?'))
 
 def get_most_frequent(list_var):
     '''
@@ -48,9 +50,10 @@ def get_most_frequent(list_var):
     return ret
 
 #Test get_most_frequent function
-print(get_most_frequent([1,2,3,4,2,3,2,2,3,4,1,5,2,6,2,6,3,1,1,2]))
-print(get_most_frequent([1,2,3,4,5]))
-print(get_most_frequent('hello, world'))
+print("*** get_most_frequent tests ***")
+print("get_most_frequent([1,2,3,4,2,3,2,2,3,4,1,5,2,6,2,6,3,1,1,2])",get_most_frequent([1,2,3,4,2,3,2,2,3,4,1,5,2,6,2,6,3,1,1,2]))
+print("get_most_frequent([1,2,3,4,5])",get_most_frequent([1,2,3,4,5]))
+print("get_most_frequent('hello, world')",get_most_frequent('hello, world'))
 
 def which_duplicates(list_var):
     '''
@@ -64,14 +67,15 @@ def which_duplicates(list_var):
     return ret
 
 #Test which_duplicates function
-print(which_duplicates([1,2,3,3,3,4,1,2,4,5,2,3,4,7,8]))
+print("*** which_duplicates tests ***")
+print("which_duplicates([1,2,3,3,3,4,1,2,4,5,2,3,4,7,8])",which_duplicates([1,2,3,3,3,4,1,2,4,5,2,3,4,7,8]))
 
 def compute_factorial(int_val):
     '''
     returns factorial of a number
     '''
     ret = None
-    if type(int_val) is int:
+    if type(int_val) is int and int_val >= 0:
         prod = 1
         for i in range(int_val+1)[1:]:
             prod *= i
@@ -81,7 +85,11 @@ def compute_factorial(int_val):
     return ret
 
 #Test compute_factorial function
-print(compute_factorial(5))
+print("*** compute_factorial tests ***")
+print("compute_factorial(5)",compute_factorial(5))
+print("compute_factorial(2)",compute_factorial(2))
+print("compute_factorial(-3)",compute_factorial(-3))
+print("compute_factorial(0)",compute_factorial(0))
 
 def is_prime(int_val):
     '''
@@ -91,10 +99,10 @@ def is_prime(int_val):
     if type(int_val) is int:
         if int_val in [2,3]:
             return True
-        if int_val == 1:
+        if int_val == 1 or (int_val%2)==0:
             return False
-        tests = range(2, int_val)
-        prime = min([int_val % t for t in tests], default=1)
+        tests = range(3, int_val,2)
+        prime = min([int_val % t for t in tests], default=0)
         if prime == 0:
             return False
         else:
@@ -104,9 +112,13 @@ def is_prime(int_val):
     return ret
 
 #Test is_prime function
-print(is_prime(4))
-print(is_prime(13))
-print(is_prime(1))
-print(is_prime(2))
-print(is_prime(53154)) 
+print("*** is_prime tests ***")
+print("is_prime(4)",is_prime(4))
+print("is_prime(13)",is_prime(13))
+print("is_prime(1)",is_prime(1))
+print("is_prime(2)",is_prime(2))
+print("is_prime(53154)",is_prime(53154)) 
+print("is_prime(-5)",is_prime(-5))
+print("is_prime(0)",is_prime(0))
+print("is_prime(3.1415)",is_prime(3.1415))
 
