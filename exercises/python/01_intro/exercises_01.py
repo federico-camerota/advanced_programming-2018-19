@@ -89,8 +89,10 @@ def is_prime(int_val):
     '''
     ret = None
     if type(int_val) is int:
-        if int_val in [1,2,3]:
+        if int_val in [2,3]:
             return True
+        if int_val == 1:
+            return False
         tests = range(2, int_val)
         prime = min([int_val % t for t in tests], default=1)
         if prime == 0:
