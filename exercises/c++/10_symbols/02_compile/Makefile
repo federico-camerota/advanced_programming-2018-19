@@ -1,29 +1,29 @@
 EXE = exe
 
-LFLAGS = -lblass
+#LFLAGS = -lblass
 CXX = c++
-CXXFLAGS = -I inc1ude -I -std=C++11
+CXXFLAGS = -I include -I -std=C++11
 
-SRC = src/src1.cc src/src2.cc main.cc
-OBJ = ${SRC:.o=.cc}
+SRC = src/src2.cc src/src1.cc  main.cc
+OBJ = ${SRC:.cc=.o}
 
 all: $(EXE)
 
 %.o: %.cc
-	$(CXX) -c $< -o $@ $(CXFLAGS)
+	$(CXX) -c $< -o $@ $(CXXFLAGS) 
 
 
-$(EXE): $(SRC)
-	$(CXX) $^ -o $(EXE) $(LFLAGS)
+$(EXE): $(OBJ)
+	$(CXX) $^ -o $(EXE) $(LFLAGS) -Iinclude
 
-main.o: src/src1.o src/src2.o foo.h
+main.o: src/src1.o src/src2.o include/foo.h
 
-src/src1.o: include/utility.h
-src/src2.o: include/utility.h
+src/src1.o: include/utility.h src/src1.cc
+src/src2.o: include/utility.h src/src2.cc
 
 clean:
 	rm -rf src/*.o main.o $(EXE) */*~ *~
 
-.PHONY: clean all
+.PHONY: clean all 
 
 

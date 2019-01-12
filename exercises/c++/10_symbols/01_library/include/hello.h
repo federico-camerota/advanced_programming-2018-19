@@ -7,5 +7,7 @@ void hello_dummy();
 
 void hello_foo();
 
+void fun();
+
 
 #endif /* _HELLO_H_ */
