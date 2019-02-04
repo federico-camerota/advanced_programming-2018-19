@@ -1,5 +1,5 @@
-#ifndef _UTIL_H_
-    #define _UTIL_H_
+#ifndef UTIL_H_
+    #define UTIL_H_
 
     #include <string>
     #include <algorithm>
@@ -18,7 +18,7 @@
       return s;
     }
 
-    inline std::string to_lower(const std::string& os){
+   inline std::string to_lower(const std::string& os){
       //static auto s = os;
       auto s = os;
       //std::trasnform(s.begin(), s.end(), s.begin(), ::tolower);
